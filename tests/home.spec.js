@@ -10,3 +10,8 @@ test("has link", async ({ page }) => {
   await page.getByRole("link", { name: "Testing link" }).click();
   await expect(page).toHaveURL("https://www.google.com");
 });
+
+test("has button", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Hello" }).click();
+});
