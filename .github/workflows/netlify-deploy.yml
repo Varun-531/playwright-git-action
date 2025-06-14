@@ -36,4 +36,5 @@ jobs:
           netlify deploy --prod \
             --dir=dist \
             --site=$NETLIFY_SITE_ID \
-            --auth=$NETLIFY_AUTH_TOKEN
+            --auth=$NETLIFY_AUTH_TOKEN \
+            --message "GitHub Actions deploy - skip build"
