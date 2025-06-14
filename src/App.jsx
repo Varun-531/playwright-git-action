@@ -5,7 +5,7 @@ const App = () => {
     <div>
       <h1>Hello World</h1>
       <a href="https://www.google.com">Testing link</a>
-      <a href="https://www.google.com">Testing link 2</a>
+      <button>Hello</button>
     </div>
   );
 };
