@@ -28,10 +28,10 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          if [ "$GITHUB_REF_NAME" != "main" ]; then
-            echo "Not main branch, skipping production deploy"
-            exit 0
-          fi
+          # if [ "$GITHUB_REF_NAME" != "main" ]; then
+          #   echo "Not main branch, skipping production deploy"
+          #   exit 0
+          # fi
 
           netlify deploy --prod \
             --dir=dist \
