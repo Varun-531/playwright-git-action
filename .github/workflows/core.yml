@@ -28,5 +28,5 @@ jobs:
     name: Deploy to Netlify
     uses: ./.github/workflows/netlify-deploy.yml
     needs: run-playwright-tests
-    if: ${{ needs.run-playwright-tests.result == 'success' }}
+    if: ${{ needs.run-playwright-tests.result == 'success' && github.ref == 'refs/heads/main' }}
     secrets: inherit

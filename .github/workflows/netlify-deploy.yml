@@ -8,9 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ✅ No need to checkout source code here
-      # - uses: actions/checkout@v4 ← removed
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
