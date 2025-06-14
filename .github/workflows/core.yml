@@ -1,0 +1,18 @@
+name: Core Workflow 🎯
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  run-playwright-tests:
+    name: Run Playwright Tests
+    uses: ./playwright.yml
+    secrets: inherit
+
+  deploy-to-netlify:
+    name: Deploy to Netlify
+    uses: ./netlify-deploy.yml
+    needs: run-playwright-tests
+    if: ${{ needs.run-playwright-tests.result == 'success' }}
+    secrets: inherit

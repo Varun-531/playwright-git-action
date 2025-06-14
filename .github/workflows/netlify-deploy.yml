@@ -2,7 +2,7 @@ name: Netlify Deploy 🚀
 
 on:
   workflow_run:
-    workflows: ["Playwright Tests 🏃💨"] # must match `name:` in playwright.yml
+    workflows: ["Playwright Tests 🏃💨"]
     types:
       - completed
 
