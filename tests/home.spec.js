@@ -8,5 +8,5 @@ test("has title", async ({ page }) => {
 test("has link", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Testing link" }).click();
-  await expect(page).toHaveURL("https://www.google123.com");
+  await expect(page).toHaveURL("https://www.google.com");
 });
