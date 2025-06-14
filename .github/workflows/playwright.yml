@@ -29,3 +29,5 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      - name: Testing
+        run: echo 'Hello world1234'
