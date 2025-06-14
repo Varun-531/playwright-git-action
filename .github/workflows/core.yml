@@ -5,8 +5,15 @@ on:
     branches: ["**"]
 
 jobs:
+  run-unit-tests:
+    name: Run Unit Tests
+    uses: ./.github/workflows/unit-test.yml
+    secrets: inherit
+
   run-playwright-tests:
     name: Run Playwright Tests
+    needs: run-unit-tests
+    if: ${{ needs.run-unit-tests.result == 'success' }}
     uses: ./.github/workflows/playwright.yml
     secrets: inherit
 
