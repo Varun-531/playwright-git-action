@@ -10,10 +10,17 @@ jobs:
     uses: ./.github/workflows/unit-test.yml
     secrets: inherit
 
-  run-playwright-tests:
-    name: Run Playwright Tests
+  build-project:
+    name: Build Project
     needs: run-unit-tests
     if: ${{ needs.run-unit-tests.result == 'success' }}
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+
+  run-playwright-tests:
+    name: Run Playwright Tests
+    needs: build-project
+    if: ${{ needs.run-unit-tests.result == 'success' && needs.build-project.result == 'success' }}
     uses: ./.github/workflows/playwright.yml
     secrets: inherit
 
