@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # ✅ No need to checkout source code here
+      # - uses: actions/checkout@v4 ← removed
 
       - uses: actions/setup-node@v4
         with:
@@ -28,13 +29,8 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
-          # if [ "$GITHUB_REF_NAME" != "main" ]; then
-          #   echo "Not main branch, skipping production deploy"
-          #   exit 0
-          # fi
-
           netlify deploy --prod \
             --dir=dist \
             --site=$NETLIFY_SITE_ID \
             --auth=$NETLIFY_AUTH_TOKEN \
-            --message "GitHub Actions deploy - skip build"
+            --message "GitHub Actions deploy - skip Netlify build"
