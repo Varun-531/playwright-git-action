@@ -1,7 +1,7 @@
 name: Netlify Deploy 🚀
 
 on:
-  workflow_call: {} # This allows it to be invoked from another workflow
+  workflow_call: {} # Allow external calls
 
 jobs:
   deploy:
@@ -28,6 +28,11 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
+          if [ "$GITHUB_REF_NAME" != "main" ]; then
+            echo "Not main branch, skipping production deploy"
+            exit 0
+          fi
+
           netlify deploy --prod \
             --dir=dist \
             --site=$NETLIFY_SITE_ID \
