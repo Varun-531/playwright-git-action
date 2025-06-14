@@ -19,7 +19,7 @@ jobs:
         run: npx playwright install --with-deps
       - name: Wait for server to be ready
         run: |
-          npm run dev
+          npm run dev --timeout 20000
           echo "Waiting for server to be ready..."
           npx wait-on http://localhost:5173 --timeout 60000
       - name: Run Playwright tests
